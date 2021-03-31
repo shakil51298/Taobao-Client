@@ -24,7 +24,9 @@ const AddProducts = () => {
             headers:{'Content-type' : 'application/json'}
         }
         fetch(url, method )
-        .then(response => console.log(response));
+        .then(response => {
+            alert('product added succesfully!!')
+            console.log(response)});
     };
     
     // image upload event handler
@@ -38,22 +40,23 @@ const AddProducts = () => {
             setProductImgUrl(res.data.data.display_url)
         })
         .catch(error  =>{
+            
             console.log(error)
         })
     }
     return (
-        <div>
-            <h1>Add New products from here</h1>
+        <div className="container">
+            <h1 className="text-center">Add New products from here</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input name="name" placeholder="Product Name" defaultValue="pran potato crackers" ref={register} />
+                <input name="name" className="form-control" placeholder="Product Name" defaultValue="pran potato crackers" ref={register} />
                 <br/>
-                <input name="weight" placeholder="Weight" defaultValue="50gm" ref={register} />
+                <input name="weight" className="form-control" placeholder="Weight" defaultValue="50gm" ref={register} />
                 <br/>
-                <input name="price" placeholder="Price" defaultValue="50$" ref={register} />
+                <input name="price" className="form-control" placeholder="Price" defaultValue="50$" ref={register} />
                 <br/>
-                <input type="file" name="exampleRequired" onChange={handleUploadImage} ref={register({ required: true })} />
+                <input class="form-control" type="file" id="formFile" onChange={handleUploadImage} ref={register({ required: true })} />
                 <br/>
-                <input type="submit" />
+                <input className="btn btn-primary w-100" type="submit" />
             </form>
         </div>
     );

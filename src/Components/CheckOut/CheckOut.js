@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { userContext } from '../../App';
 
 const CheckOut = () => {
-    const [checkOut, setCheckOut] = useState({})
-    console.log(checkOut);
-    const {name,ProductPrice,ProductWeight} = checkOut;
+    const [loggedInuser , setloggedInuser] = useContext(userContext)
+    const [checkOutProducts, setCheckOut] = useState({})
+    const {name,ProductPrice,ProductWeight} = checkOutProducts;
     const {id} = useParams();
     useEffect(()=>{
         const method = {
@@ -15,7 +16,24 @@ const CheckOut = () => {
         fetch(`http://localhost:5055/product/${id}`)
         .then(res=>res.json())
         .then(data => setCheckOut(data[0]))
-    })
+    },[id])
+
+    const handlePlaceOrder = () =>{
+        const orderDetails = {...loggedInuser , product : checkOutProducts ,  orderTime : new Date()}
+        // console.log(orderDetails);
+        const url = `http://localhost:5055/addOrder`
+        const send = {
+            method:'POST',
+            headers : {'Content-type' : 'application/json'},
+            body:JSON.stringify(orderDetails)
+        }
+        fetch(url, send)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            data && alert("your order placedd successfully")
+        })
+    }
     return (
         <div>
             <div className="container table-responsive">
@@ -38,7 +56,7 @@ const CheckOut = () => {
                             <td></td>
                             <td>{ProductPrice } $</td>
                         </tr>
-                            <button className="btn btn-primary">Check Out</button>
+                            <button onClick={handlePlaceOrder} className="btn btn-primary">Confirm Order</button>
                     </tbody>
             </table>
             </div>
