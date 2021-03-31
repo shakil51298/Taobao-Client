@@ -1,24 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Home from './Components/Home/Home';
+import AddProducts from './Components/AddProducts/AddProducts';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import NotFound from './Components/Not-Found/NotFound';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './Components/Header/Header';
+import ManageProduct from './Components/ManageProduct/ManageProduct';
+import { createContext, useState } from 'react';
+import CheckOut from './Components/CheckOut/CheckOut';
+export const productContext = createContext()
 function App() {
+  const [product , setProduct] = useState([])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <productContext.Provider className="App" value = {[product , setProduct]}>
+      <Router>
+        <Header/>
+        <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route path="/addproducts">
+            <AddProducts/>
+          </Route>
+          <Route path="/manageProduct">
+            <ManageProduct/>
+          </Route>
+          <Route path="/procesChekout/:id">
+            <CheckOut/>
+          </Route>
+          <Route path="*">
+            <NotFound/>
+          </Route>
+        </Switch>
+      </Router>
+    </productContext.Provider>
   );
 }
 
