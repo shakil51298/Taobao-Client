@@ -17,7 +17,7 @@ const AddProducts = () => {
             ProductPrice : data.price
         }
         // console.log(producUploadingData);
-        const url = `http://localhost:5055/addProducts`
+        const url = `https://desolate-mesa-13156.herokuapp.com/addProducts`
         const method = {
             method: "POST",
             body: JSON.stringify(producUploadingData),
@@ -30,6 +30,7 @@ const AddProducts = () => {
     // image upload event handler
     const  handleUploadImage = (e) => {
         const imageData = new FormData(); // object
+        console.log(imageData);
         imageData.set('key' , '8f8e8714542fcc684949127b840d41d1');
         imageData.append('image', e.target.files[0]);
 

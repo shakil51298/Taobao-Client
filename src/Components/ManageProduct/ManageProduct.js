@@ -5,7 +5,7 @@ const ManageProduct = () => {
     const [product , setProduct] = useState([])
 
     useEffect(() => {
-        const url = `http://localhost:5055/products`
+        const url = `https://desolate-mesa-13156.herokuapp.com/products`
         fetch(url)
         .then(response => response.json())
         .then(data => setProduct(data))

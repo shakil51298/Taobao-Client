@@ -5,7 +5,7 @@ const ProductTable = (props) => {
     const {name , productImgUrl,ProductWeight,ProductPrice, _id} = props.product;
 
     const handleDeleteProduct = (id) =>{
-        const url = `http://localhost:5055/delete/product/${id}`
+        const url = `https://desolate-mesa-13156.herokuapp.com/delete/product/${id}`
         fetch(url, {method:"DELETE"})
         .then(res => {
             alert("Product delete successfully!!")

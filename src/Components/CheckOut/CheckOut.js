@@ -8,7 +8,7 @@ const CheckOut = () => {
     const {name,ProductPrice,ProductWeight} = checkOutProducts;
     const {id} = useParams();
     useEffect(()=>{
-        fetch(`http://localhost:5055/product/${id}`)
+        fetch(`https://desolate-mesa-13156.herokuapp.com/product/${id}`)
         .then(res=>res.json())
         .then(data => setCheckOut(data[0]))
     },[id])
@@ -16,7 +16,7 @@ const CheckOut = () => {
     const handlePlaceOrder = () =>{
         const orderDetails = {...loggedInuser , product : checkOutProducts ,  orderTime : new Date()}
         // console.log(orderDetails);
-        const url = `http://localhost:5055/addOrder`
+        const url = `https://desolate-mesa-13156.herokuapp.com/addOrder`
         const send = {
             method:'POST',
             headers : {'Content-type' : 'application/json'},
