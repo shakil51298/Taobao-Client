@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+https://github.com/Porgramming-Hero-web-course/full-stack-client-shakil51298
 /node_modules
 /.pnp
 .pnp.js

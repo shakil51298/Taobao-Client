@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { productContext } from '../../App';
+import Admin from '../Admin/Admin';
 import ProductTable from './ProductTable/ProductTable';
 
 const ManageProduct = () => {
@@ -37,3 +38,6 @@ const ManageProduct = () => {
 };
 
 export default ManageProduct;
+
+
+

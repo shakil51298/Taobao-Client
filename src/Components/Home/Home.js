@@ -12,7 +12,6 @@ const Home = () => {
     },[])
     return (
         <div className="container">
-            <h2>this is Home page!!</h2>  
             <div className="row g-4">
                 {
                     product.length === 0 && <div class="spinner-border text-danger" role="status">

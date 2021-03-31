@@ -12,11 +12,13 @@ import Header from './Components/Header/Header';
 import ManageProduct from './Components/ManageProduct/ManageProduct';
 import { createContext, useState } from 'react';
 import CheckOut from './Components/CheckOut/CheckOut';
+import Admin from './Components/Admin/Admin';
+import Login from './Components/Login/Login';
 export const productContext = createContext()
 function App() {
   const [product , setProduct] = useState([])
   return (
-    <productContext.Provider className="App" value = {[product , setProduct]}>
+    <productContext.Provider value = {[product , setProduct]}>
       <Router>
         <Header/>
         <Switch>
@@ -26,11 +28,17 @@ function App() {
           <Route path="/addproducts">
             <AddProducts/>
           </Route>
+          <Route path="/login">
+            <Login/>
+          </Route>
           <Route path="/manageProduct">
             <ManageProduct/>
           </Route>
           <Route path="/procesChekout/:id">
             <CheckOut/>
+          </Route>
+          <Route path="/admin">
+            <Admin/>
           </Route>
           <Route path="*">
             <NotFound/>
