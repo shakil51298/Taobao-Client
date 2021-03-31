@@ -3,7 +3,7 @@ import { userContext } from '../../App';
 import OrderCard from './OrderCard/OrderCard';
 
 const Orders = () => {
-    const [loggedInuser , setloggedInuser] = useContext(userContext)
+    const [loggedInuser ] = useContext(userContext)
     const [orders , setOrders] = useState([])
 
     useEffect(()=>{
@@ -16,11 +16,11 @@ const Orders = () => {
         fetch(url, send)
         .then(res =>res.json())
         .then(data => setOrders(data))
-    },[])
+    },[loggedInuser.email])
 
     return (
         <div className="container">
-            <h1 className="text-center">You have total {orders.length} order are here</h1>
+            <h1 className="text-center mt-5">You have total {orders.length} order are here</h1>
             <div className="row row-cols-1 row-cols-md-1 g-5 mt-5">
             {
                 orders.map(orderData => <OrderCard ordedData = {orderData} key={orderData._id}></OrderCard>)

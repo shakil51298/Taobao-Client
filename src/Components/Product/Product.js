@@ -1,9 +1,8 @@
-import { Card, Button } from 'bootstrap';
 import React from 'react';
 import { useHistory } from 'react-router';
 
 const Product = (props) => {
-    const { ProductPrice, ProductWeight, name, productImgUrl, _id } = props.product
+    const { ProductPrice, name, productImgUrl, _id } = props.product
     const history = useHistory()
    
     const handleBuyNow = (id) =>{
@@ -11,20 +10,22 @@ const Product = (props) => {
         history.push(`/procesChekout/${id}`)
     }
     return (
-        <div className="card w-25">
-            <img src={productImgUrl} className="card-img-top w-100" alt="..."/>
+        <div className="col-md-4 mt-3 text-center">
+        <div className="card">
+            <img src={productImgUrl} className="card-img-top" alt="..."/>            
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
-                <div className="row">
-                    <div className="col">
-                        <h3 className="text-danger">{ProductPrice}$</h3>
-                    </div>
-                    <div className="col">
-                        <button onClick={()=>handleBuyNow(_id)} className="btn btn-primary">Buy Now</button>
-                    </div>
+            </div>
+            <div className="row pb-2">
+                <div className="col">
+                    <h3>{ProductPrice} $</h3>
+                </div>
+                <div className="col">
+                    <button onClick={()=>handleBuyNow(_id)} className="btn btn-primary">Buy Now</button>
                 </div>
             </div>
         </div>
+    </div>
     );
 };
 

@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Admin from '../Admin/Admin';
+import React, {  useEffect, useState } from 'react';
 import ProductTable from './ProductTable/ProductTable';
 
 const ManageProduct = () => {
@@ -25,7 +24,9 @@ const ManageProduct = () => {
                 </thead>
                 <tbody>
                     {
-                        product.length == 0 && <h1>Loading...</h1>
+                        product.length === 0 && <div class=" spinner-border text-danger" role="status">
+                        <span class="visually-hidden"></span>
+                        </div>
                     }
                     {
                         product.map(product =><ProductTable product ={product} key={product._id}></ProductTable>)

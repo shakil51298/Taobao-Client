@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import Product from '../Product/Product';
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
         .then(data => setProduct(data))
     },[])
     return (
-        <div className="container">
+        <div className="container mt-3">
             <div className="row g-4">
                 {
                     product.length === 0 && <div class="spinner-border text-danger" role="status">

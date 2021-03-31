@@ -3,16 +3,11 @@ import { useParams } from 'react-router';
 import { userContext } from '../../App';
 
 const CheckOut = () => {
-    const [loggedInuser , setloggedInuser] = useContext(userContext)
+    const [loggedInuser ] = useContext(userContext)
     const [checkOutProducts, setCheckOut] = useState({})
     const {name,ProductPrice,ProductWeight} = checkOutProducts;
     const {id} = useParams();
     useEffect(()=>{
-        const method = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-
-        }
         fetch(`http://localhost:5055/product/${id}`)
         .then(res=>res.json())
         .then(data => setCheckOut(data[0]))

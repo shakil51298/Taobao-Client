@@ -21,9 +21,6 @@ function App() {
   const [loggedInuser , setloggedInuser] = useState({})
   return (
     <userContext.Provider value = {[loggedInuser , setloggedInuser]}>
-            { 
-              loggedInuser.isSignIn && <h1>email : {loggedInuser.email}</h1>
-            }
       <Router>
         <Header/>
         <Switch>
@@ -45,9 +42,9 @@ function App() {
           <PrivateRoute path="/procesChekout/:id">
             <CheckOut/>
           </PrivateRoute>
-          <Route path="/admin">
+          <PrivateRoute path="/admin">
             <Admin/>
-          </Route>
+          </PrivateRoute>
           <Route path="*">
             <NotFound/>
           </Route>

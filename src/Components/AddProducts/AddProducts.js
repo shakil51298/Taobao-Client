@@ -24,9 +24,7 @@ const AddProducts = () => {
             headers:{'Content-type' : 'application/json'}
         }
         fetch(url, method )
-        .then(response => {
-            alert('product added succesfully!!')
-            console.log(response)});
+        .then(response => alert('product added succesfully!!'));
     };
     
     // image upload event handler
