@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { productContext } from '../../App';
 import Product from '../Product/Product';
 
 const Home = () => {
-    const [product , setProduct] = useContext(productContext)
+    const [product , setProduct] = useState([])
     useEffect(() => {
         const url = `http://localhost:5055/products`
         fetch(url)

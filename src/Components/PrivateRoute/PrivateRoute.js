@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router';
+import { userContext } from '../../App';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    let auth = useAuth();
+    const [loggedInuser , setloggedInuser] = useContext(userContext)
+    
+    // let auth = useAuth();
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        auth.user ? (
+      loggedInuser.isSignIn ? (
           children
         ) : (
           <Redirect

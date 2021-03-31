@@ -1,10 +1,9 @@
-import React, { useContext, useEffect } from 'react';
-import { productContext } from '../../App';
+import React, { useContext, useEffect, useState } from 'react';
 import Admin from '../Admin/Admin';
 import ProductTable from './ProductTable/ProductTable';
 
 const ManageProduct = () => {
-    const [product , setProduct] = useContext(productContext)
+    const [product , setProduct] = useState([])
 
     useEffect(() => {
         const url = `http://localhost:5055/products`

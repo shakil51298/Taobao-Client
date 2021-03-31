@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Link} from "react-router-dom";
+import { userContext } from '../../App';
 
 const Header = () => {
+    const [loggedInuser , setloggedInuser] = useContext(userContext)
     return (
         <div className="row">
             <div className="col">
@@ -12,8 +14,9 @@ const Header = () => {
                 <Link to="/order" className="m-2">Orders</Link>
                 <Link to="/admin" className="m-2">Admin</Link>
                 <Link to="/deals" className="m-2">Deals</Link>
-                <Link to="/userlogin" className="m-2">User</Link>
-                <Link to="/login" className="m-2">Login</Link>
+                {
+                    loggedInuser.isSignIn ? <Link to="/login" className="m-2">{loggedInuser.name || loggedInuser.email}</Link> : <Link to="/login" className="m-2">Login</Link>
+                }
             </div>
         </div>
     );
