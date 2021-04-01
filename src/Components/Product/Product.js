@@ -12,9 +12,9 @@ const Product = (props) => {
     return (
         <div className="col-md-4 mt-3 text-center">
         <div className="card">
-            <img src={productImgUrl} className="card-img-top" alt="..."/>            
+            <img src={productImgUrl} className="card-img-top" alt="/"/>            
             <div className="card-body">
-                <h5 className="card-title">{name}</h5>
+                <h5 className="card-title text-danger">{name}</h5>
             </div>
             <div className="row pb-2">
                 <div className="col">

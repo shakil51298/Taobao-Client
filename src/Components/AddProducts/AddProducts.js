@@ -51,7 +51,7 @@ const AddProducts = () => {
                 <br/>
                 <input name="weight" className="form-control" placeholder="Weight" defaultValue="50gm" ref={register} />
                 <br/>
-                <input name="price" className="form-control" placeholder="Price" defaultValue="50$" ref={register} />
+                <input name="price" className="form-control" placeholder="Price" defaultValue="50" ref={register} />
                 <br/>
                 <input class="form-control" type="file" id="formFile" onChange={handleUploadImage} ref={register({ required: true })} />
                 <br/>
