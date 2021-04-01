@@ -16,6 +16,7 @@ import Admin from './Components/Admin/Admin';
 import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Orders from './Components/Orders/Orders';
+import UserProfile from './Components/UserProfile/UserProfile';
 export const userContext = createContext()
 function App() {
   const [loggedInuser , setloggedInuser] = useState({})
@@ -41,6 +42,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/procesChekout/:id">
             <CheckOut/>
+          </PrivateRoute>
+          <PrivateRoute path="/userProfile">
+            <UserProfile/>
           </PrivateRoute>
           <PrivateRoute path="/admin">
             <Admin/>

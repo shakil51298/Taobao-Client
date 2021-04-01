@@ -7,13 +7,8 @@ const Orders = () => {
     const [orders , setOrders] = useState([])
 
     useEffect(()=>{
-        const url = `https://desolate-mesa-13156.herokuapp.com/orders?email=${loggedInuser.email}`
-        const send = {
-            method: 'GET',
-            headers: {'Content-type' : 'application/json'},
-            // authorization : `Bearer ${se}`
-        }
-        fetch(url, send)
+        const url = `http://localhost:5055/orders?email=${loggedInuser.email}`
+        fetch(url)
         .then(res =>res.json())
         .then(data => setOrders(data))
     },[loggedInuser.email])

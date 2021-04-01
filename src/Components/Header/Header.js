@@ -26,7 +26,8 @@ const Header = () => {
                                     loggedInuser.isSignIn ? <Link to="/login" className="m-1">{loggedInuser.name || loggedInuser.email}</Link> : <Link to="/login" className="m-2">Login</Link>
                                 }
                                 {
-                                    loggedInuser.isSignIn && <Link to="/login"><img className="ml-0 rounded-circle w-25" src={loggedInuser.photo} alt=""/></Link>
+                                    loggedInuser.isSignIn && <Link to="/userProfile"><img className="ml-0 rounded-circle w-25" src={loggedInuser.photo} alt="profile photo"/>
+                                    </Link>
                                 }
                             </span>
                         </div>
