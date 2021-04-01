@@ -1,9 +1,23 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+    input: {
+      display: 'none',
+    },
+  }));
 
 const AddProducts = () => {
 
+    const classes = useStyles();
     const { register, handleSubmit} = useForm();
     // state
     const[productImgUrl , setProductImgUrl] = useState(null)
@@ -24,13 +38,12 @@ const AddProducts = () => {
             headers:{'Content-type' : 'application/json'}
         }
         fetch(url, method )
-        .then(response => alert('product added succesfully!!'));
+        .then(response => alert('Product uploaded successfully!!') );
     };
-    
+   
     // image upload event handler
     const  handleUploadImage = (e) => {
         const imageData = new FormData(); // object
-        console.log(imageData);
         imageData.set('key' , '8f8e8714542fcc684949127b840d41d1');
         imageData.append('image', e.target.files[0]);
 
@@ -53,7 +66,22 @@ const AddProducts = () => {
                 <br/>
                 <input name="price" className="form-control" placeholder="Price" defaultValue="50" ref={register} />
                 <br/>
-                <input class="form-control" type="file" id="formFile" onChange={handleUploadImage} ref={register({ required: true })} />
+                {/* <input class="form-control" type="file" id="formFile" onChange={handleUploadImage} ref={register({ required: true })} /> */}
+                <div className={classes.root}>
+                    <input
+                        onChange={handleUploadImage}
+                        accept="image/*"
+                        className={classes.input}
+                        id="contained-button-file"
+                        multiple
+                        type="file"
+                    />
+                    <label htmlFor="contained-button-file">
+                        <Button variant="contained" color="primary" component="span" >
+                        Upload
+                        </Button>
+                    </label>
+                </div>
                 <br/>
                 <input className="btn btn-primary w-100" type="submit" />
             </form>
