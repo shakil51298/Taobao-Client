@@ -60,7 +60,7 @@ const AddProducts = () => {
         <div className="container">
             <h1 className="text-center">Add New products from here</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input name="name" required className="form-control" placeholder="Product Name" defaultValue="pran potato crackers" ref={register} />
+                <input name="name" required className="form-control" placeholder="Product Name" defaultValue="pran potato 			crackers" ref={register} />
                 <br/>
                 <input name="weight" aria-required className="form-control" placeholder="Weight" defaultValue="50gm" ref={register} />
                 <br/>
